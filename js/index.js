@@ -1,4 +1,5 @@
-
+const API = "https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=Vodka"
+const lpagelist = document.getElementById('lpagelist')
 document.addEventListener('DOMContentLoaded', () => {
     const container = document.getElementById('vh-100');
     // const link = document.getElementById('logs');
@@ -49,7 +50,49 @@ logout.addEventListener('click', () => {
     logout.style.display = "none";
     page.style.display = "none";
     cart.style.display = 'none';
-    nav.style.display = "flex"
+    nav.style.display = "flex";
 })
 
+// landng page display
+const displayRandomDrinks = (image, name) => {
+
+    const mainDiv = document.createElement('div')
+    mainDiv.classList.add('col-12', 'p-1')
+
+    const cardDiv = document.createElement('div')
+    cardDiv.classList.add('card', 'col-12', 'p-2')
+
+    const drinkimage = document.createElement('img')
+    drinkimage.classList.add('card-img-top')
+    drinkimage.src = image
+
+    const drinkName = document.createElement('h5')
+    drinkName.classList.add('card-title')
+    drinkName.innerText = name
+
+    // append title and image to card
+    cardDiv.appendChild(drinkimage)
+    cardDiv.appendChild(drinkName)
+
+    mainDiv.appendChild(cardDiv)
+
+    return mainDiv
+}
+
+// landing page display function
+const landingPage = () => {
+    fetch(API)
+    .then((response) => response.json())
+    .then((data) => {
+        const drinks = data.drinks;
+        const drinksElement = drinks.map(
+            cat => displayRandomDrinks(
+                cat.strDrinkThumb, 
+                cat.strDrink
+                )
+        )
+        lpagelist.append(...drinksElement)
+    })
+}
+landingPage()
 })
