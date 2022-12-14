@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/bootstrap.css">
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg bg-dark" id="nav">
+    <div class="container-fluid">
+      <div class="logo">
+        <img src="/cocktail.jpg" alt="">
+      </div>
+      <a class="navbar-brand" href="#">Navbar</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" id="link" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Brands</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link ">About</a>
+          </li>
+        </ul>
+        <div class="d-flex" style="color:red;" id="cart" hidden>
+          <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-cart4" viewBox="0 0 16 16">
+            <path d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l.5 2H5V5H3.14zM6 5v2h2V5H6zm3 0v2h2V5H9zm3 0v2h1.36l.5-2H12zm1.11 3H12v2h.61l.5-2zM11 8H9v2h2V8zM8 8H6v2h2V8zM5 8H3.89l.5 2H5V8zm0 5a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z"/>
+          </svg>
+         </div>
+        <div id="logs">
+          <div class="d-flex" id="names">
+            <button class="btn btn-outline-success m-2" id="login" class="btns">login</button>
+            <button class="btn btn-outline-success m-2" class="btns" id="registe" type="submit">Register</button>
+          </div>
+        </div>
+     
+        <!-- <form class="d-flex" role="search">
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success" type="submit">Search</button>
+        </form> -->
+      </div>
+    </div>
+  </nav>
+  <div class="main" id="main">
+    <section class="vh-100" id="vh-100" hidden>
+      <div class="container-fluid h-custom">
+        <div class="row d-flex justify-content-center align-items-center h-100 mt-2">
+          <div class="col-md-9 col-lg-6 col-xl-5">
+            <img src="cocktail.jpg" class="img-fluid" alt="Sample image">
+          </div>
+          <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1" id="formlogin">
+            <form>
+              <h2><u>Login Form</u></h2>
+              <!-- Email input -->
+              <div class="form-outline mb-4">
+                <label class="form-label" for="email">Email address</label>
+                <input type="email" id="email" class="form-control form-control-lg"
+                  placeholder="Enter a valid email address" required />
+              </div>
+
+              <!-- Password input -->
+              <div class="form-outline mb-3">
+                <label class="form-label" for="password">Password</label>
+                <input type="password" id="password" class="form-control form-control-lg" placeholder="Enter password"
+                  required />
+              </div>
+
+              <div class="d-flex justify-content-between align-items-center">
+                <!-- forgot password -->
+                <a href="#" class="text-body">Forgot password?</a>
+                <button type="button" class="btn btn-primary btn-lg" id="loginbtn"
+                  style="padding-left: 2.5rem; padding-right: 2.5rem;">Login</button>
+
+              </div>
+
+              <div class="text-center text-lg-start mt-4 pt-2">
+
+                <p class="small fw-bold mt-2 pt-1 mb-0" id="regist">Don't have an account? <a href="#!"
+                    class="link-danger">Register</a></p>
+              </div>
+
+            </form>
+
+
+            <!-- Registration page -->
+
+
+          </div>
+          <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1" id="register">
+            <form>
+              <h2><u>Registration Form</u></h2>
+              <!-- Email input -->
+              <div class="form-outline mb-4">
+                <label class="form-label" for="remail">Email address</label>
+                <input type="email" id="remail" class="form-control form-control-lg"
+                  placeholder="Enter a valid email address" required />
+              </div>
+
+              <!-- Password input -->
+              <div class="form-outline mb-3">
+                <label class="form-label" for="rpassword">Password</label>
+                <input type="password" id="rpassword" class="form-control form-control-lg" placeholder="Enter password"
+                  required />
+              </div>
+
+              <!-- Confirm Password -->
+              <div class="form-outline mb-3">
+                <label class="form-label" for="rcpassword">Confirm Password</label>
+                <input type="password" id="rcpassword" class="form-control form-control-lg" placeholder="Enter password"
+                  required />
+              </div>
+              <div class="d-flex justify-content-between align-items-center">
+                <button type="button" class="btn btn-primary btn-lg" id="registerbtn"
+                  style="padding-left: 2.5rem; padding-right: 2.5rem;">Register</button>
+
+              </div>
+
+              <div class="text-center text-lg-start mt-4 pt-2">
+
+                <p class="small fw-bold mt-2 pt-1 mb-0" id="regist">Already have an account? <a href="#!"
+                    class="link-danger">Login</a></p>
+              </div>
+
+            </form>
+          </div>
+        </div>
+      </div>
+
+    </section>
+    <div class="page" id="page" hidden>
+      <h2>mainpage</h2>
+    </div>
+  </div>
+  <script src="/css/bootstrap.css"></script>
+  <script src="/js/index.js"></script>
+</body>
+
+</html>
