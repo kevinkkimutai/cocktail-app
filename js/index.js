@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const regist = document.getElementById('regist');
     const formlogin = document.getElementById('formlogin');
     const register = document.getElementById('register');
+    const nav = document.getElementById('nav')
     // login button
     const loginbutton = document.getElementById('loginbtn');
     //registration
@@ -44,10 +45,11 @@ document.addEventListener('DOMContentLoaded', () => {
         formlogin.style.display = "flex";
     })
 logout.addEventListener('click', () => {
-    logs.style.display = "";
+    logs.style.display = "flex";
     logout.style.display = "none";
     page.style.display = "none";
     cart.style.display = 'none';
+    nav.style.display = "flex"
 })
 
 })

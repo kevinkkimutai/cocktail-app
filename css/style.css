@@ -1,14 +1,17 @@
 .navbar {
     color: aliceblue;
 }
+
 .collapse a {
     color: antiquewhite;
 }
+
 .logo img {
-width: 40px;
-border-radius: 50%;
+    width: 40px;
+    border-radius: 50%;
 }
-.container-fluid .navbar-brand{
+
+.container-fluid .navbar-brand {
     color: blue;
     padding-left: 10px;
     font-style: italic;
@@ -17,20 +20,21 @@ border-radius: 50%;
     text-transform: uppercase;
     font-weight: bolder;
 }
+
 .col-md-9 img {
     border-radius: 30px;
-    
+
 }
+
 h2 {
     text-align: center;
 }
+
 label {
     font-weight: bolder;
 }
 
-.col-md-8 {
-    background-color: aqua;
-}
-.regi {
-    text-align: center;
+.nlp {
+    padding-left: 400px;
+    border-bottom: none;
 }
