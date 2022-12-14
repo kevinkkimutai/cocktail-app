@@ -24,3 +24,13 @@ border-radius: 50%;
 h2 {
     text-align: center;
 }
+label {
+    font-weight: bolder;
+}
+
+.col-md-8 {
+    background-color: aqua;
+}
+.regi {
+    text-align: center;
+}

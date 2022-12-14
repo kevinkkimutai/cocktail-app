@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const loginbutton = document.getElementById('loginbtn');
     //registration
     const registerbtn = document.getElementById('registerbtn')
+    const logout = document.getElementById('logout')
     // main page
     const page = document.getElementById('page');
     // cart
@@ -17,7 +18,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     login.addEventListener("click", () => {
         logs.style.display = "none";
-        cart.style.display = "none"
         register.style.display = "none";
         container.removeAttribute('hidden');
         formlogin.style.display = "box";
@@ -32,6 +32,8 @@ document.addEventListener('DOMContentLoaded', () => {
     loginbutton.addEventListener('click', () => {
         container.style.display = "none"
         page.removeAttribute('hidden')
+        logout.removeAttribute('hidden')
+        cart.removeAttribute('hidden')
       
 
     })
@@ -41,6 +43,11 @@ document.addEventListener('DOMContentLoaded', () => {
         container.removeAttribute('hidden');
         formlogin.style.display = "flex";
     })
-
+logout.addEventListener('click', () => {
+    logs.style.display = "";
+    logout.style.display = "none";
+    page.style.display = "none";
+    cart.style.display = 'none';
+})
 
 })
