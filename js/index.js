@@ -1,5 +1,5 @@
 const API = "https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=Vodka"
-const API_SHORTS = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=martini"
+const API_MARGARITA = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=martini"
 
 const lpagelist = document.getElementById('lpagelist')
 document.addEventListener('DOMContentLoaded', () => {
@@ -18,8 +18,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const logout = document.getElementById('logout')
     // main page
     const page = document.getElementById('page');
+    const mainpage = document.getElementById('mainpage');
     // cart
     const cart = document.getElementById('cart')
+
 
     login.addEventListener("click", () => {
         logs.style.display = "none";
@@ -75,10 +77,9 @@ const displayRandomDrinks = (image, name) => {
     drinkName.classList.add('card-title')
     drinkName.innerText = name
 
-    // append title and image to card
+    // append title and image to card loading page
     cardDiv.appendChild(drinkimage)
     cardDiv.appendChild(drinkName)
-
     mainDiv.appendChild(cardDiv)
 
     return mainDiv
@@ -100,20 +101,47 @@ const landingPage = () => {
     })
 }
 
-// Other Drink
-const shotsPage = () => {
-    fetch(API_SHORTS)
+// page after login display margarita's
+const displayMargarita = (image, name) => {
+
+    const mainDiv = document.createElement('div')
+    mainDiv.classList.add('col-12', 'p-1')
+
+    const cardDiv = document.createElement('div')
+    cardDiv.classList.add('card', 'col-12', 'p-2')
+
+    const drinkimage = document.createElement('img')
+    drinkimage.classList.add('card-img-top')
+    drinkimage.src = image
+
+    const drinkName = document.createElement('h6')
+    drinkName.classList.add('card-title')
+    drinkName.innerText = name
+
+    // append title and image to card loading page
+    cardDiv.appendChild(drinkimage)
+    cardDiv.appendChild(drinkName)
+    mainDiv.appendChild(cardDiv)
+
+    return mainDiv
+}
+
+// page after login display margarita's fetch function
+const afterLoginPage = () => {
+    fetch(API_MARGARITA)
     .then((response) => response.json())
     .then((data) => {
-        const drinks = data.drinks;
-        const drinksElement = drinks.map(
-            cat => displayRandomDrinks(
+        const margarita = data.drinks;
+        const margaritaElement = margarita.map(
+            cat => displayMargarita(
                 cat.strDrinkThumb, 
-                cat.strDrink
+                cat.strDrink,
+                cat.idDrink
                 )
         )
-        lpagelist.append(...drinksElement)
+        mainpage.append(...margaritaElement)
     })
 }
-landingPage()
+landingPage();
+afterLoginPage();
 })
