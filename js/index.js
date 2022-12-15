@@ -1,5 +1,5 @@
 const API = "https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=Vodka"
-const API_MARGARITA = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=martini"
+const API_MARGARITA = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=margarita"
 
 const lpagelist = document.getElementById('lpagelist')
 document.addEventListener('DOMContentLoaded', () => {
@@ -94,7 +94,7 @@ const landingPage = () => {
         const drinksElement = drinks.map(
             cat => displayRandomDrinks(
                 cat.strDrinkThumb, 
-                cat.strDrink
+                cat.strDrink,
                 )
         )
         lpagelist.append(...drinksElement)
@@ -102,7 +102,7 @@ const landingPage = () => {
 }
 
 // page after login display margarita's
-const displayMargarita = (image, name) => {
+const displayMargarita = (image, name, id) => {
 
     const mainDiv = document.createElement('div')
     mainDiv.classList.add('col-12', 'p-1')
@@ -117,10 +117,15 @@ const displayMargarita = (image, name) => {
     const drinkName = document.createElement('h6')
     drinkName.classList.add('card-title')
     drinkName.innerText = name
-
+    const drinkId = document.createElement('h6')
+    drinkId.classList.add('card-title')
+    const price = (id / 20) / 1.5;
+    const finalprice = price.toFixed(2)
+    drinkId.innerHTML = `<span>Ksh: <k>${finalprice}</k><span>`
     // append title and image to card loading page
     cardDiv.appendChild(drinkimage)
     cardDiv.appendChild(drinkName)
+    cardDiv.appendChild(drinkId)
     mainDiv.appendChild(cardDiv)
 
     return mainDiv
@@ -136,7 +141,7 @@ const afterLoginPage = () => {
             cat => displayMargarita(
                 cat.strDrinkThumb, 
                 cat.strDrink,
-                cat.idDrink
+               cat.idDrink
                 )
         )
         mainpage.append(...margaritaElement)

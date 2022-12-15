@@ -47,7 +47,7 @@ label {
     background-image: url(/martini.jpg);
 }
 .col-12 {
-   max-height: 5.5cm; 
+
    max-width: 10cm;
 }
 .card {
@@ -59,4 +59,17 @@ label {
 .subt {
     text-align: left;
     text-decoration: underline;
+    color: aliceblue;
+}
+.card-title {
+    height: 0.5cm;
+    overflow: hidden;
+    padding: 1px;
+}
+span {
+    font-weight: bold;
+}
+k {
+    font-weight: 400;
+    font-style: italic;
 }
