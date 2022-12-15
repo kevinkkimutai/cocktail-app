@@ -171,7 +171,22 @@ const whiskyPunch = () => {
         whisky.append(...margaritaElement)
     })
 }
-
+// Egg nog,s api fetch
+const eggNogs = () => {
+    fetch(API_EGG)
+    .then((response) => response.json())
+    .then((data) => {
+        const margarita = data.drinks;
+        const margaritaElement = margarita.map(
+            cat => displayMargarita(
+                cat.strDrinkThumb, 
+                cat.strDrink,
+               cat.idDrink
+                )
+        )
+        eggnog.append(...margaritaElement)
+    })
+}
 landingPage();
 afterLoginPage();
 whiskyPunch();
