@@ -26,6 +26,8 @@ document.addEventListener('DOMContentLoaded', () => {
       const whisky = document.getElementById('whisky');
     // egg nogs
     const eggnog = document.getElementById('egg');
+    // ice picks
+    const ice = document.getElementById('ice');
     // cart
     const cart = document.getElementById('cart')
 
@@ -187,8 +189,25 @@ const eggNogs = () => {
         eggnog.append(...margaritaElement)
     })
 }
+// ice picks fetch
+const icePicks = () => {
+    fetch(API_ICE)
+    .then((response) => response.json())
+    .then((data) => {
+        const margarita = data.drinks;
+        const margaritaElement = margarita.map(
+            cat => displayMargarita(
+                cat.strDrinkThumb, 
+                cat.strDrink,
+               cat.idDrink
+                )
+        )
+        ice.append(...margaritaElement)
+    })
+}
 landingPage();
 afterLoginPage();
 whiskyPunch();
 eggNogs();
+icePicks();
 })
