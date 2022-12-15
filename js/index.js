@@ -1,5 +1,8 @@
 const API = "https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=Vodka"
 const API_MARGARITA = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=margarita"
+const API_W = "https://www.thecocktaildb.com/api/json/v1/1/search.php?f=w";
+const API_EGG = "https://www.thecocktaildb.com/api/json/v1/1/search.php?f=e";
+const API_ICE = "https://www.thecocktaildb.com/api/json/v1/1/search.php?f=i";
 
 const lpagelist = document.getElementById('lpagelist')
 document.addEventListener('DOMContentLoaded', () => {
@@ -19,6 +22,10 @@ document.addEventListener('DOMContentLoaded', () => {
     // main page
     const page = document.getElementById('page');
     const mainpage = document.getElementById('mainpage');
+      //whisky punchs
+      const whisky = document.getElementById('whisky');
+    // egg nogs
+    const eggnog = document.getElementById('egg');
     // cart
     const cart = document.getElementById('cart')
 
@@ -122,11 +129,12 @@ const displayMargarita = (image, name, id) => {
     const price = (id / 20) / 1.5;
     const finalprice = price.toFixed(2)
     drinkId.innerHTML = `<span>Ksh: <k>${finalprice}</k><span>`
+    
     // append title and image to card loading page
-    cardDiv.appendChild(drinkimage)
-    cardDiv.appendChild(drinkName)
-    cardDiv.appendChild(drinkId)
-    mainDiv.appendChild(cardDiv)
+    cardDiv.appendChild(drinkimage);
+    cardDiv.appendChild(drinkName);
+    cardDiv.appendChild(drinkId);
+    mainDiv.appendChild(cardDiv);
 
     return mainDiv
 }
@@ -147,6 +155,25 @@ const afterLoginPage = () => {
         mainpage.append(...margaritaElement)
     })
 }
+// whisky punch api fetch
+const whiskyPunch = () => {
+    fetch(API_W)
+    .then((response) => response.json())
+    .then((data) => {
+        const margarita = data.drinks;
+        const margaritaElement = margarita.map(
+            cat => displayMargarita(
+                cat.strDrinkThumb, 
+                cat.strDrink,
+               cat.idDrink
+                )
+        )
+        whisky.append(...margaritaElement)
+    })
+}
+
 landingPage();
 afterLoginPage();
+whiskyPunch();
+eggNogs();
 })
