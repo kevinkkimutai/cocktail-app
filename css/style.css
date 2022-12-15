@@ -1,7 +1,12 @@
 .navbar {
     color: aliceblue;
+   
 }
-
+/* #nav {
+    overflow: hidden;
+    position: fixed;
+    width: 100%;
+} */
 .collapse a {
     color: antiquewhite;
 }
@@ -37,4 +42,17 @@ label {
 .nlp {
     padding-left: 400px;
     border-bottom: none;
+}
+.main {
+    background-image: url(/martini.jpg);
+}
+.col-12 {
+   max-height: 5.5cm; 
+   max-width: 10cm;
+}
+.card {
+    opacity: .9;
+}
+.page {
+    padding: 10px;
 }

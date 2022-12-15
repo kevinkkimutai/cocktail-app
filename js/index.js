@@ -1,10 +1,13 @@
 const API = "https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=Vodka"
+const API_SHORTS = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=martini"
+
 const lpagelist = document.getElementById('lpagelist')
 document.addEventListener('DOMContentLoaded', () => {
     const container = document.getElementById('vh-100');
-    // const link = document.getElementById('logs');
+    const landing = document.getElementById('landing');
     const logs = document.getElementById('logs');
     const regist = document.getElementById('regist');
+    const login = document.getElementById('login');
     const formlogin = document.getElementById('formlogin');
     const register = document.getElementById('register');
     const nav = document.getElementById('nav')
@@ -22,7 +25,8 @@ document.addEventListener('DOMContentLoaded', () => {
         logs.style.display = "none";
         register.style.display = "none";
         container.removeAttribute('hidden');
-        formlogin.style.display = "box";
+        formlogin.style.display = "";
+        landing.style.display = "none"
 
     })
     regist.addEventListener('click', () => {
@@ -51,6 +55,7 @@ logout.addEventListener('click', () => {
     page.style.display = "none";
     cart.style.display = 'none';
     nav.style.display = "flex";
+    landing.style.display = "";
 })
 
 // landng page display
@@ -66,7 +71,7 @@ const displayRandomDrinks = (image, name) => {
     drinkimage.classList.add('card-img-top')
     drinkimage.src = image
 
-    const drinkName = document.createElement('h5')
+    const drinkName = document.createElement('h6')
     drinkName.classList.add('card-title')
     drinkName.innerText = name
 
@@ -82,6 +87,22 @@ const displayRandomDrinks = (image, name) => {
 // landing page display function
 const landingPage = () => {
     fetch(API)
+    .then((response) => response.json())
+    .then((data) => {
+        const drinks = data.drinks;
+        const drinksElement = drinks.map(
+            cat => displayRandomDrinks(
+                cat.strDrinkThumb, 
+                cat.strDrink
+                )
+        )
+        lpagelist.append(...drinksElement)
+    })
+}
+
+// Other Drink
+const shotsPage = () => {
+    fetch(API_SHORTS)
     .then((response) => response.json())
     .then((data) => {
         const drinks = data.drinks;

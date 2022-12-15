@@ -11,7 +11,7 @@
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-lg bg-dark" id="nav">
+  <nav class="navbar navbar-expand-lg bg-dark fixed-top w-100 top-0" id="nav">
     <div class="container-fluid">
       <div class="logo">
         <img src="/cocktail.jpg" alt="">
@@ -26,10 +26,10 @@
           <ul class="nav nav-tabs me-auto ">
             <li class="nlp">
               <li class="nav-item ">
-                <a class="nav-link" aria-current="page" href="#">Home</a>
+                <a class="nav-link" aria-current="page" href="#landing">Home</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Brands</a>
+                <a class="nav-link" href="#login">Brands</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link ">About</a>
@@ -58,8 +58,8 @@
       </div>
     </div>
   </nav>
-  <div class="main" id="main">
-    <section class="vh-100" id="vh-100" hidden>
+  <div class="main p-5" id="main">
+    <section class="vh-100 mt-5 text-white" id="vh-100" hidden>
       <div class="container-fluid h-custom">
         <div class="row d-flex justify-content-center align-items-center h-100 mt-2">
           <div class="col-md-9 col-lg-6 col-xl-5">
@@ -84,7 +84,7 @@
 
               <div class="d-flex justify-content-between align-items-center">
                 <!-- forgot password -->
-                <a href="#" class="text-body">Forgot password?</a>
+                <a href="#" class="text-body link-primary">Forgot password?</a>
                 <button type="button" class="btn btn-sm btn-primary btn-lg" id="loginbtn"
                   style="padding-left: 2.5rem; padding-right: 2.5rem;">Login</button>
 
@@ -93,7 +93,7 @@
               <div class="text-center text-lg-start mt-4 pt-2">
 
                 <p class="small fw-bold mt-2 pt-1 mb-0" id="regist">Don't have an account? <a href="#!"
-                    class="link-danger">Register</a></p>
+                    class="link-primary">Register</a></p>
               </div>
 
             </form>
@@ -103,7 +103,7 @@
 
 
           </div>
-          <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1 regi" id="register">
+          <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1 regi mt-5" id="register">
             <form>
               <h2><u>Registration Form</u></h2>
               <!-- Email input -->
@@ -146,10 +146,10 @@
     </section>
     <!-- static landing page -->
 
-    <div class="page" id="landing">
-      <h2>Popular Drinks </h2>
-      <div class="container text-center">
-        <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3" id="lpagelist">
+    <div class="page " id="landing">
+      <h2 style="color: aliceblue;">Popular Drinks </h2>
+      <div class="container text-center mt-1">
+        <div class="row row-cols-lg-6 g-2 g-lg-3" id="lpagelist">
          <!-- landing page displays -->
         </div>
       </div>
@@ -161,7 +161,7 @@
     <div class="page" id="page" hidden>
       <h2>mainpage</h2>
       <div class="container text-center">
-        <div class="row row-cols-sm-4 row-cols-lg-5 g-2 g-lg-3">
+        <div class="row row-cols-sm-6 row-cols-lg-8 g-2 g-lg-3">
           <div class="col">
             <div class="p-3 bg-light">
               <img src="cocktail.jpg" class="img-fluid" alt="Sample image">
