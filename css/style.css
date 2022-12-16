@@ -44,8 +44,8 @@ label {
     border-bottom: none;
 }
 body {
-    background-image: url(images/martini.jpg);
-    background-image: url(/images/martini.jpg);
+    /* background-image: url(images/martini.jpg); */
+    /* background-image: url(/images/martini.jpg); */
 }
 .vh-100{
     padding-top: 80px;
