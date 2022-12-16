@@ -1,0 +1,28 @@
+{
+  "name": "cocktail-app",
+  "version": "1.0.0",
+  "description": "This ia an online cocktail app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kevinkkimutai/cocktail-app.git"
+  },
+  "keywords": [
+    "eventlistener",
+    "html",
+    "css",
+    "javascript",
+    "cards",
+    "forms",
+    "bootstrap"
+  ],
+  "author": "Kelvin Kimutai",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kevinkkimutai/cocktail-app/issues"
+  },
+  "homepage": "https://github.com/kevinkkimutai/cocktail-app#readme"
+}
