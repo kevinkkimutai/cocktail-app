@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const container = document.getElementById('vh-100');
     const landing = document.getElementById('landing');
     const logs = document.getElementById('logs');
-    const regist = document.getElementById('regist');
+    const regist = document.querySelector('.regist')
     const login = document.getElementById('login');
     const formlogin = document.getElementById('formlogin');
     const register = document.getElementById('register');
@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
         logs.style.display = "none";
         register.style.display = "none";
         container.removeAttribute('hidden');
-        formlogin.style.display = "";
+        formlogin.style.display = "box";
         landing.style.display = "none"
 
     })
@@ -51,6 +51,7 @@ document.addEventListener('DOMContentLoaded', () => {
         page.removeAttribute('hidden')
         logout.removeAttribute('hidden')
         cart.removeAttribute('hidden')
+        formlogin.style.display = "box";
       
 
     })
@@ -66,7 +67,7 @@ logout.addEventListener('click', () => {
     page.style.display = "none";
     cart.style.display = 'none';
     nav.style.display = "flex";
-    landing.style.display = "";
+    landing.style.display = "block";
 })
 
 // landng page display

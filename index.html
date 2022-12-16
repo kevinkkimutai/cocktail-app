@@ -6,16 +6,17 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CockTail</title>
-  <link rel="icon" href="/icon.jpg" class="icon" type="image/icon type" sizes="16x16">
+  <link rel="icon" href="images/icon.jpg" class="icon" type="image/icon type" sizes="16x16">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/bootstrap.css">
 </head>
 
 <body>
+  <div class="container" id="main">
   <nav class="navbar navbar-expand-lg bg-dark fixed-top w-100 top-0" id="nav">
     <div class="container-fluid">
       <div class="logo">
-        <img src="/cocktail.jpg" alt="">
+        <img src="/images/blue.jpg" alt="">
       </div>
       <a class="navbar-brand" href="#">CockTail</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
@@ -44,22 +45,22 @@
           </svg>
          </div>
           <!-- Search Engine -->
-           <form class="d-flex" role="search">
-          <input class="form-control me-2" type="search" placeholder="Enter cocktail" aria-label="Search">
-          <button class="btn btn-sm btn-outline-primary m-2" type="submit">Search</button>
-        </form> 
+          <form class="d-flex">
+            <input type="text" class="form-control-sm m-2 border-primary" placeholder="Search" id="search">
+            <button class="btn btn-sm btn-outline-info m-2" id="serachbtn" type="submit">Search</button>
+        </form>
 
          <!-- logout button -->
          <form>
           <div class="d-flex">
-            <button class="btn btn-sm btn-outline-primary m-2" class="btns"  type="submit" id="logout" hidden>LogOut</button>
+            <button class="btn btn-sm btn-outline-primary m-2"  type="submit" id="logout" hidden>LogOut</button>
            </div>
          </form>
          <!-- login and register button -->
         <div id="logs">
           <div class="d-flex" id="names">
             <button class="btn btn-sm btn-outline-success m-2" id="login" class="btns">login</button>
-            <button class="btn btn-sm btn-outline-success m-2" class="btns" id="registe" type="submit">Register</button>
+            <button class="btn btn-sm btn-outline-success m-2 registe"  id="registe" type="submit">Register</button>
           </div>
         </div>
      
@@ -67,27 +68,28 @@
       </div>
     </div>
   </nav>
-  <div class="main p-5" id="main">
+
     <section class="vh-100 mt-5 text-white" id="vh-100" hidden>
       <div class="container-fluid h-custom">
         <div class="row d-flex justify-content-center align-items-center h-100 mt-2">
           <div class="col-md-9 col-lg-6 col-xl-5">
-            <img src="cocktail.jpg" class="img-fluid" alt="Sample image">
+            <img src="/images/blue.jpg" class="img-fluid" alt="Sample image">
           </div>
           <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1 login" id="formlogin">
-            <form>
+            <form name="loginforn">
               <h2><u>Login Form</u></h2>
               <!-- Email input -->
+              
               <div class="form-outline mb-4">
                 <label class="form-label" for="email">Email:</label>
                 <input type="email" id="email" class="form-control form-control-lg"
-                  placeholder="Enter a valid email address" required>
+                  placeholder="Enter a valid email address">
               </div>
 
               <!-- Password input -->
               <div class="form-outline mb-3">
                 <label class="form-label" for="password">Password:</label>
-                <input type="password" id="password" class="form-control form-control-lg" placeholder="Enter password" required>
+                <input type="password" id="password" class="form-control form-control-lg" placeholder="Enter password">
               </div>
 
               <div class="d-flex justify-content-between align-items-center">
@@ -100,7 +102,7 @@
 
               <div class="text-center text-lg-start mt-4 pt-2">
 
-                <p class="small fw-bold mt-2 pt-1 mb-0" id="regist">Don't have an account? <a href="#!"
+                <p class="small fw-bold mt-2 pt-1 mb-0 regist" id="regist">Don't have an account? <a href="#!"
                     class="link-primary">Register</a></p>
               </div>
 
@@ -154,10 +156,10 @@
     </section>
     <!-- static landing page -->
 
-    <div class="page " id="landing">
+    <div class="page bg-transparent" id="landing">
       <h2 style="color: aliceblue;">Popular Drinks </h2>
-      <div class="container text-center mt-1">
-        <div class="row row-cols-lg-6 g-2 g-lg-3" id="lpagelist">
+      <div class="container text-center mt-1 bg-transparent">
+        <div class="row row-cols-lg-6 g-2 g-lg-3 bg-transparent" id="lpagelist">
          <!-- landing page displays -->
         </div>
       </div>

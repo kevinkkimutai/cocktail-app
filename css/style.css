@@ -43,9 +43,14 @@ label {
     padding-left: 150px;
     border-bottom: none;
 }
-.main {
-    background-image: url(/martini.jpg);
+body {
+    background-image: url(/images/martini.jpg);
 }
+.vh-100{
+    padding-top: 80px;
+    position: relative;
+}
+
 .col-12 {
 
    max-width: 10cm;
@@ -54,7 +59,7 @@ label {
     opacity: .9;
 }
 .page {
-    padding: 10px;
+    padding: 20px;
 }
 .subt {
     text-align: left;
@@ -72,4 +77,7 @@ span {
 k {
     font-weight: 400;
     font-style: italic;
+}
+#landing {
+    padding-top: 65px;
 }
