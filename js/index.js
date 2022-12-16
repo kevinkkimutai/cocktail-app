@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const login = document.getElementById('login');
     const formlogin = document.getElementById('formlogin');
     const register = document.getElementById('register');
-    const nav = document.getElementById('nav')
+    const registerTag = document.getElementById('registe')
     // login button
     const loginbutton = document.getElementById('loginbtn');
     //registration
@@ -22,15 +22,15 @@ document.addEventListener('DOMContentLoaded', () => {
     // main page
     const page = document.getElementById('page');
     const mainpage = document.getElementById('mainpage');
-      //whisky punchs
-      const whisky = document.getElementById('whisky');
+    //whisky punchs
+    const whisky = document.getElementById('whisky');
     // egg nogs
     const eggnog = document.getElementById('egg');
     // ice picks
     const ice = document.getElementById('ice');
     // cart
     const cart = document.getElementById('cart')
-
+    logout.style.display = 'none'
 
     login.addEventListener("click", () => {
         logs.style.display = "none";
@@ -38,6 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
         container.removeAttribute('hidden');
         formlogin.style.display = "box";
         landing.style.display = "none"
+        logout.style.display = 'none'
 
     })
     regist.addEventListener('click', () => {
@@ -45,14 +46,13 @@ document.addEventListener('DOMContentLoaded', () => {
         register.style.display = "flex";
         container.style.display = "box";
         container.removeAttribute('hidden');
+        logout.style.display = 'none'
     })
     loginbutton.addEventListener('click', () => {
         container.style.display = "none"
         page.removeAttribute('hidden')
-        logout.removeAttribute('hidden')
         cart.removeAttribute('hidden')
-        formlogin.style.display = "box";
-      
+        logout.style.display = "flex"
 
     })
     registerbtn.addEventListener('click', () => {
@@ -60,155 +60,158 @@ document.addEventListener('DOMContentLoaded', () => {
         register.style.display = "none";
         container.removeAttribute('hidden');
         formlogin.style.display = "flex";
+        logout.style.display = 'none'
     })
-logout.addEventListener('click', () => {
-    logs.style.display = "flex";
-    logout.style.display = "none";
-    page.style.display = "none";
-    cart.style.display = 'none';
-    nav.style.display = "flex";
-    landing.style.display = "block";
-})
+    logout.addEventListener('click', () => {
+        window.location.reload();
 
-// landng page display
-const displayRandomDrinks = (image, name) => {
+    })
+    registerTag.addEventListener('click', () => {
+        container.removeAttribute('hidden');
+        landing.style.display = "none"
+        logout.style.display = 'none'
+        register.style.display = "none";
+    })
 
-    const mainDiv = document.createElement('div')
-    mainDiv.classList.add('col-12', 'p-1')
+    // landng page display
+    const displayRandomDrinks = (image, name) => {
 
-    const cardDiv = document.createElement('div')
-    cardDiv.classList.add('card', 'col-12', 'p-2')
+        const mainDiv = document.createElement('div')
+        mainDiv.classList.add('col-12', 'p-1')
 
-    const drinkimage = document.createElement('img')
-    drinkimage.classList.add('card-img-top')
-    drinkimage.src = image
+        const cardDiv = document.createElement('div')
+        cardDiv.classList.add('card', 'col-12', 'p-2')
 
-    const drinkName = document.createElement('h6')
-    drinkName.classList.add('card-title')
-    drinkName.innerText = name
+        const drinkimage = document.createElement('img')
+        drinkimage.classList.add('card-img-top')
+        drinkimage.src = image
 
-    // append title and image to card loading page
-    cardDiv.appendChild(drinkimage)
-    cardDiv.appendChild(drinkName)
-    mainDiv.appendChild(cardDiv)
+        const drinkName = document.createElement('h6')
+        drinkName.classList.add('card-title')
+        drinkName.innerText = name
 
-    return mainDiv
-}
+        // append title and image to card loading page
+        cardDiv.appendChild(drinkimage)
+        cardDiv.appendChild(drinkName)
+        mainDiv.appendChild(cardDiv)
 
-// landing page display function
-const landingPage = () => {
-    fetch(API)
-    .then((response) => response.json())
-    .then((data) => {
-        const drinks = data.drinks;
-        const drinksElement = drinks.map(
-            cat => displayRandomDrinks(
-                cat.strDrinkThumb, 
-                cat.strDrink,
+        return mainDiv
+    }
+
+    // landing page display function
+    const landingPage = () => {
+        fetch(API)
+            .then((response) => response.json())
+            .then((data) => {
+                const drinks = data.drinks;
+                const drinksElement = drinks.map(
+                    cat => displayRandomDrinks(
+                        cat.strDrinkThumb,
+                        cat.strDrink,
+                    )
                 )
-        )
-        lpagelist.append(...drinksElement)
-    })
-}
+                lpagelist.append(...drinksElement)
+            })
+    }
 
-// page after login display margarita's
-const displayMargarita = (image, name, id) => {
+    // page after login display margarita's
+    const displayMargarita = (image, name, id) => {
 
-    const mainDiv = document.createElement('div')
-    mainDiv.classList.add('col-12', 'p-1')
+        const mainDiv = document.createElement('div')
+        mainDiv.classList.add('col-12', 'p-1')
 
-    const cardDiv = document.createElement('div')
-    cardDiv.classList.add('card', 'col-12', 'p-2')
+        const cardDiv = document.createElement('div')
+        cardDiv.classList.add('card', 'col-12', 'p-2')
 
-    const drinkimage = document.createElement('img')
-    drinkimage.classList.add('card-img-top')
-    drinkimage.src = image
+        const drinkimage = document.createElement('img')
+        drinkimage.classList.add('card-img-top')
+        drinkimage.src = image
 
-    const drinkName = document.createElement('h6')
-    drinkName.classList.add('card-title')
-    drinkName.innerText = name
-    const drinkId = document.createElement('h6')
-    drinkId.classList.add('card-title')
-    const price = (id / 20) / 1.5;
-    const finalprice = price.toFixed(2)
-    drinkId.innerHTML = `<span>Ksh: <k>${finalprice}</k><span>`
-    
-    // append title and image to card loading page
-    cardDiv.appendChild(drinkimage);
-    cardDiv.appendChild(drinkName);
-    cardDiv.appendChild(drinkId);
-    mainDiv.appendChild(cardDiv);
+        const drinkName = document.createElement('h6')
+        drinkName.classList.add('card-title')
+        drinkName.innerText = name
+        const drinkId = document.createElement('h6')
+        drinkId.classList.add('card-title')
+        const price = (id / 20) / 1.5;
+        const finalprice = price.toFixed(2)
+        drinkId.innerHTML = `<span>Ksh: <k>${finalprice}</k><span>`
 
-    return mainDiv
-}
+        // append title and image to card loading page
+        cardDiv.appendChild(drinkimage);
+        cardDiv.appendChild(drinkName);
+        cardDiv.appendChild(drinkId);
+        mainDiv.appendChild(cardDiv);
 
-// page after login display margarita's fetch function
-const afterLoginPage = () => {
-    fetch(API_MARGARITA)
-    .then((response) => response.json())
-    .then((data) => {
-        const margarita = data.drinks;
-        const margaritaElement = margarita.map(
-            cat => displayMargarita(
-                cat.strDrinkThumb, 
-                cat.strDrink,
-               cat.idDrink
+        return mainDiv
+    }
+
+    // page after login display margarita's fetch function
+    const afterLoginPage = () => {
+        fetch(API_MARGARITA)
+            .then((response) => response.json())
+            .then((data) => {
+                const margarita = data.drinks;
+                const margaritaElement = margarita.map(
+                    cat => displayMargarita(
+                        cat.strDrinkThumb,
+                        cat.strDrink,
+                        cat.idDrink
+                    )
                 )
-        )
-        mainpage.append(...margaritaElement)
-    })
-}
-// whisky punch api fetch
-const whiskyPunch = () => {
-    fetch(API_W)
-    .then((response) => response.json())
-    .then((data) => {
-        const margarita = data.drinks;
-        const margaritaElement = margarita.map(
-            cat => displayMargarita(
-                cat.strDrinkThumb, 
-                cat.strDrink,
-               cat.idDrink
+                mainpage.append(...margaritaElement)
+            })
+    }
+    // whisky punch api fetch
+    const whiskyPunch = () => {
+        fetch(API_W)
+            .then((response) => response.json())
+            .then((data) => {
+                const margarita = data.drinks;
+                const margaritaElement = margarita.map(
+                    cat => displayMargarita(
+                        cat.strDrinkThumb,
+                        cat.strDrink,
+                        cat.idDrink
+                    )
                 )
-        )
-        whisky.append(...margaritaElement)
-    })
-}
-// Egg nog,s api fetch
-const eggNogs = () => {
-    fetch(API_EGG)
-    .then((response) => response.json())
-    .then((data) => {
-        const margarita = data.drinks;
-        const margaritaElement = margarita.map(
-            cat => displayMargarita(
-                cat.strDrinkThumb, 
-                cat.strDrink,
-               cat.idDrink
+                whisky.append(...margaritaElement)
+            })
+    }
+    // Egg nog,s api fetch
+    const eggNogs = () => {
+        fetch(API_EGG)
+            .then((response) => response.json())
+            .then((data) => {
+                const margarita = data.drinks;
+                const margaritaElement = margarita.map(
+                    cat => displayMargarita(
+                        cat.strDrinkThumb,
+                        cat.strDrink,
+                        cat.idDrink
+                    )
                 )
-        )
-        eggnog.append(...margaritaElement)
-    })
-}
-// ice picks fetch
-const icePicks = () => {
-    fetch(API_ICE)
-    .then((response) => response.json())
-    .then((data) => {
-        const margarita = data.drinks;
-        const margaritaElement = margarita.map(
-            cat => displayMargarita(
-                cat.strDrinkThumb, 
-                cat.strDrink,
-               cat.idDrink
+                eggnog.append(...margaritaElement)
+            })
+    }
+    // ice picks fetch
+    const icePicks = () => {
+        fetch(API_ICE)
+            .then((response) => response.json())
+            .then((data) => {
+                const margarita = data.drinks;
+                const margaritaElement = margarita.map(
+                    cat => displayMargarita(
+                        cat.strDrinkThumb,
+                        cat.strDrink,
+                        cat.idDrink
+                    )
                 )
-        )
-        ice.append(...margaritaElement)
-    })
-}
-landingPage();
-afterLoginPage();
-whiskyPunch();
-eggNogs();
-icePicks();
+                ice.append(...margaritaElement)
+            })
+    }
+    landingPage();
+    afterLoginPage();
+    whiskyPunch();
+    eggNogs();
+    icePicks();
 })
