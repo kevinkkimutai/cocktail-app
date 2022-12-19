@@ -3,7 +3,7 @@ const API_MARGARITA = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=
 const API_W = "https://www.thecocktaildb.com/api/json/v1/1/search.php?f=w";
 const API_EGG = "https://www.thecocktaildb.com/api/json/v1/1/search.php?f=e";
 const API_ICE = "https://www.thecocktaildb.com/api/json/v1/1/search.php?f=i";
-
+const SEARCH = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s="
 const lpagelist = document.getElementById('lpagelist')
 document.addEventListener('DOMContentLoaded', () => {
     const container = document.getElementById('vh-100');
@@ -14,6 +14,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const formlogin = document.getElementById('formlogin');
     const register = document.getElementById('register');
     const registerTag = document.getElementById('registe')
+    const searchForm = document.getElementById('search_form');
+    const searchInput = document.getElementById('search');
     // login button
     const loginbutton = document.getElementById('loginbtn');
     //registration
@@ -30,6 +32,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const ice = document.getElementById('ice');
     // cart
     const cart = document.getElementById('cart')
+    //search 
+    const search = document.getElementById('searchpage');
     logout.style.display = 'none'
 
     login.addEventListener("click", () => {
@@ -71,6 +75,19 @@ document.addEventListener('DOMContentLoaded', () => {
         landing.style.display = "none"
         logout.style.display = 'none'
         register.style.display = "none";
+    })
+    // search form eventlistener
+    searchForm.addEventListener('submit', (e) => {
+e.preventDefault();
+const query = searchInput.value;
+searchDrink(query)
+logs.style.display = "none";
+register.style.display = "none";
+container.style.display = "none"
+formlogin.style.display = "none";
+landing.style.display = "none"
+logout.style.display = 'none'
+search.style.display = 'flex'
     })
 
     // landng page display
@@ -116,6 +133,36 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // page after login display margarita's
     const displayMargarita = (image, name, id) => {
+
+        const mainDiv = document.createElement('div')
+        mainDiv.classList.add('col-12', 'p-1')
+
+        const cardDiv = document.createElement('div')
+        cardDiv.classList.add('card', 'col-12', 'p-2')
+
+        const drinkimage = document.createElement('img')
+        drinkimage.classList.add('card-img-top')
+        drinkimage.src = image
+
+        const drinkName = document.createElement('h6')
+        drinkName.classList.add('card-title')
+        drinkName.innerText = name
+        const drinkId = document.createElement('h6')
+        drinkId.classList.add('card-title')
+        const price = (id / 20) / 1.5;
+        const finalprice = price.toFixed(2)
+        drinkId.innerHTML = `<span>Ksh: <k>${finalprice}</k><span>`
+
+        // append title and image to card loading page
+        cardDiv.appendChild(drinkimage);
+        cardDiv.appendChild(drinkName);
+        cardDiv.appendChild(drinkId);
+        mainDiv.appendChild(cardDiv);
+
+        return mainDiv
+    }
+    // search display 
+    const createSearchResults = (image, name, id) => {
 
         const mainDiv = document.createElement('div')
         mainDiv.classList.add('col-12', 'p-1')
@@ -209,9 +256,28 @@ document.addEventListener('DOMContentLoaded', () => {
                 ice.append(...margaritaElement)
             })
     }
+// search form
+
+const searchDrink = (drink) => {
+    fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${drink}`)
+        .then((response) => response.json())
+        .then((data) => {
+            const drinks = data.drinks;
+            const drinksElement = drinks.map(
+                cat => createSearchResults(
+                    cat.strDrinkThumb,
+                    cat.strDrink,
+                    cat.idDrink
+                )
+            )
+            search.replaceChildren(...drinksElement)
+        })
+}
+
     landingPage();
     afterLoginPage();
     whiskyPunch();
     eggNogs();
     icePicks();
+
 })
