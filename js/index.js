@@ -34,8 +34,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const cart = document.getElementById('cart')
     //search 
     const search = document.getElementById('searchpage');
+    const searchm = document.getElementById('searchp');
     logout.style.display = 'none'
-
+    searchm.style.display = 'none'
     login.addEventListener("click", () => {
         logs.style.display = "none";
         register.style.display = "none";
@@ -81,13 +82,11 @@ document.addEventListener('DOMContentLoaded', () => {
 e.preventDefault();
 const query = searchInput.value;
 searchDrink(query)
-logs.style.display = "none";
-register.style.display = "none";
 container.style.display = "none"
-formlogin.style.display = "none";
 landing.style.display = "none"
 logout.style.display = 'none'
 search.style.display = 'flex'
+searchp.style.display = ''
     })
 
     // landng page display
