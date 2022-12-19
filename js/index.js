@@ -3,8 +3,11 @@ const API_MARGARITA = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=
 const API_W = "https://www.thecocktaildb.com/api/json/v1/1/search.php?f=w";
 const API_EGG = "https://www.thecocktaildb.com/api/json/v1/1/search.php?f=e";
 const API_ICE = "https://www.thecocktaildb.com/api/json/v1/1/search.php?f=i";
-const SEARCH = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s="
-const lpagelist = document.getElementById('lpagelist')
+const SEARCH = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=";
+const API_V = "https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=Vodka";
+const API_G = "https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=Gin";
+const API_N = "https://www.thecocktaildb.com/api/json/v1/1/filter.php?a=Non_Alcoholic";
+
 document.addEventListener('DOMContentLoaded', () => {
     const container = document.getElementById('vh-100');
     const landing = document.getElementById('landing');
@@ -35,8 +38,64 @@ document.addEventListener('DOMContentLoaded', () => {
     //search 
     const search = document.getElementById('searchpage');
     const searchm = document.getElementById('searchp');
+    // tags
+    const home = document.getElementById('home');
+    // vodka
+    const vodka = document.getElementById('vodka');
+    const vodkas = document.getElementById('vods');
+    const vodk = document.getElementById('vodk');
+    // gin
+    const gin = document.getElementById('gin');
+    const gins = document.getElementById('gino')
+    const gino = document.getElementById('gins')
+    // non alcoholic
+    const nonAlco = document.getElementById('non');
+    const nons = document.getElementById('nono');
+    const nono = document.getElementById('nons');
+
     logout.style.display = 'none'
     searchm.style.display = 'none'
+    vodkas.style.display = "none";
+    nons.style.display = "none";
+    gins.style.display = "none";
+    //home tags clicks
+    home.addEventListener('click', () => {
+
+        window.location.reload();
+     
+    })
+    // vodka eventlistener
+    vodka.addEventListener('click', () => {
+        gins.style.display = "none";
+        vodkas.style.display = "flex";
+        nons.style.display = "none";
+        register.style.display = "none";
+        formlogin.style.display = "box";
+        landing.style.display = "none"
+        logout.style.display = 'none'
+    })
+    // gin eventlistener
+    gin.addEventListener('click', () => {
+        vodkas.style.display = "none";
+        nons.style.display = "none";
+        gins.style.display = ""
+        register.style.display = "none";
+        formlogin.style.display = "box";
+        landing.style.display = "none"
+        logout.style.display = 'none'
+        page.style.display = 'none'
+    })
+    // non-alcolic eventlistener
+    nonAlco.addEventListener('click', () => {
+        gins.style.display = "none";
+        nons.style.display = "";
+        vodkas.style.display = "none";
+        register.style.display = "none";
+        formlogin.style.display = "box";
+        landing.style.display = "none"
+        logout.style.display = 'none'
+    })
+
     login.addEventListener("click", () => {
         logs.style.display = "none";
         register.style.display = "none";
@@ -44,6 +103,7 @@ document.addEventListener('DOMContentLoaded', () => {
         formlogin.style.display = "box";
         landing.style.display = "none"
         logout.style.display = 'none'
+        nons.style.display = "none";
 
     })
     regist.addEventListener('click', () => {
@@ -79,14 +139,14 @@ document.addEventListener('DOMContentLoaded', () => {
     })
     // search form eventlistener
     searchForm.addEventListener('submit', (e) => {
-e.preventDefault();
-const query = searchInput.value;
-searchDrink(query)
-container.style.display = "none"
-landing.style.display = "none"
-logout.style.display = 'none'
-search.style.display = 'flex'
-searchp.style.display = ''
+        e.preventDefault();
+        const query = searchInput.value;
+        searchDrink(query)
+        container.style.display = "none"
+        landing.style.display = "none"
+        logout.style.display = 'none'
+        search.style.display = 'flex'
+        searchp.style.display = ''
     })
 
     // landng page display
@@ -255,28 +315,79 @@ searchp.style.display = ''
                 ice.append(...margaritaElement)
             })
     }
-// search form
-
-const searchDrink = (drink) => {
-    fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${drink}`)
-        .then((response) => response.json())
-        .then((data) => {
-            const drinks = data.drinks;
-            const drinksElement = drinks.map(
-                cat => createSearchResults(
-                    cat.strDrinkThumb,
-                    cat.strDrink,
-                    cat.idDrink
+    // vodkas fetch
+    const vodkaFetch = () => {
+        fetch(API_V)
+            .then((response) => response.json())
+            .then((data) => {
+                const margarita = data.drinks;
+                const margaritaElement = margarita.map(
+                    cat => displayMargarita(
+                        cat.strDrinkThumb,
+                        cat.strDrink,
+                        cat.idDrink
+                    )
                 )
-            )
-            search.replaceChildren(...drinksElement)
-        })
-}
+                vodk.append(...margaritaElement)
+            })
+    }
+    // gin fetch
+    const ginFetch = () => {
+        fetch(API_G)
+            .then((response) => response.json())
+            .then((data) => {
+                const margarita = data.drinks;
+                const margaritaElement = margarita.map(
+                    cat => displayMargarita(
+                        cat.strDrinkThumb,
+                        cat.strDrink,
+                        cat.idDrink
+                    )
+                )
+                gino.append(...margaritaElement)
+            })
+    }
+    // non alcoholic
+    const nonFetch = () => {
+        fetch(API_N)
+            .then((response) => response.json())
+            .then((data) => {
+                const margarita = data.drinks;
+                const margaritaElement = margarita.map(
+                    cat => displayMargarita(
+                        cat.strDrinkThumb,
+                        cat.strDrink,
+                        cat.idDrink
+                    )
+                )
+                nono.append(...margaritaElement)
+            })
+    }
+    // search form
+
+    const searchDrink = (drink) => {
+        fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${drink}`)
+            .then((response) => response.json())
+            .then((data) => {
+                const drinks = data.drinks;
+                const drinksElement = drinks.map(
+                    cat => createSearchResults(
+                        cat.strDrinkThumb,
+                        cat.strDrink,
+                        cat.idDrink
+                    )
+                )
+                search.replaceChildren(...drinksElement)
+            })
+    }
 
     landingPage();
     afterLoginPage();
     whiskyPunch();
     eggNogs();
     icePicks();
+    vodkaFetch();
+    ginFetch();
+    nonFetch();
 
 })
