@@ -28,7 +28,7 @@ To run this application you need to to the following:
             
 - clone the repository
 
-        git clone 
+        git clone git@github.com:kevinkkimutai/cocktail-app.git
 
 - install javascript dependencies
 
