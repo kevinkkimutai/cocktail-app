@@ -113,11 +113,14 @@ document.addEventListener('DOMContentLoaded', () => {
         container.removeAttribute('hidden');
         logout.style.display = 'none'
     })
-    loginbutton.addEventListener('click', () => {
+    loginbutton.addEventListener('click', (e) => {
+        e.preventDefault();
         container.style.display = "none"
         page.removeAttribute('hidden')
         cart.removeAttribute('hidden')
         logout.style.display = "flex"
+        landing.style.display = "none"
+
 
     })
     registerbtn.addEventListener('click', () => {
@@ -127,7 +130,8 @@ document.addEventListener('DOMContentLoaded', () => {
         formlogin.style.display = "flex";
         logout.style.display = 'none'
     })
-    logout.addEventListener('click', () => {
+    logout.addEventListener('click', (e) => {
+        e.preventDefault();
         window.location.reload();
 
     })
@@ -164,7 +168,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const drinkName = document.createElement('h6')
         drinkName.classList.add('card-title')
-        drinkName.innerText = name
+        drinkName.innerHTML = `${name} <span class="like-glyph">&#x2661;</span>`
+        
 
         // append title and image to card loading page
         cardDiv.appendChild(drinkimage)
@@ -210,7 +215,7 @@ document.addEventListener('DOMContentLoaded', () => {
         drinkId.classList.add('card-title')
         const price = (id / 20) / 1.5;
         const finalprice = price.toFixed(2)
-        drinkId.innerHTML = `<span>Ksh: <k>${finalprice}</k><span>`
+        drinkId.innerHTML = `<span>Ksh: <k>${finalprice}</k><span class="like-glyph">&#x2661;</span></span>`
 
         // append title and image to card loading page
         cardDiv.appendChild(drinkimage);
@@ -240,7 +245,7 @@ document.addEventListener('DOMContentLoaded', () => {
         drinkId.classList.add('card-title')
         const price = (id / 20) / 1.5;
         const finalprice = price.toFixed(2)
-        drinkId.innerHTML = `<span>Ksh: <k>${finalprice}</k><span>`
+        drinkId.innerHTML = `<span>Ksh: <k>${finalprice}</k><span class="like-glyph">&#x2661;</span></span>`
 
         // append title and image to card loading page
         cardDiv.appendChild(drinkimage);
@@ -380,6 +385,60 @@ document.addEventListener('DOMContentLoaded', () => {
                 search.replaceChildren(...drinksElement)
             })
     }
+
+// Defining text characters for the empty and full hearts for you to use later.
+const EMPTY_HEART = '♡'
+const FULL_HEART = '♥'
+
+// Your JavaScript code goes here!
+const emptyHearts = document.querySelectorAll("span.like-glyph")
+for(const heart of emptyHearts){
+  heart.addEventListener("click", () => {
+  fetch(mimicServerCall)
+  .then(
+    toggleHeart(heart)
+  )
+  .catch(err => {
+      const modal = document.querySelector("#modal")
+      modal.className = ""
+      modal.innerText = err;
+      setTimeout(() => {
+        modal.className = "hidden"
+      }, 3000)
+    })
+  })
+}
+
+function toggleHeart(heart) {
+  if(heart.className === "like-glyph"){
+    heart.textContent = FULL_HEART,
+    heart.className = "activated-heart"
+  } else {
+    heart.textContent = EMPTY_HEART,
+    heart.className = "like-glyph"
+  }
+}
+
+
+
+
+
+//------------------------------------------------------------------------------
+// Don't change the code below: this function mocks the server response
+//------------------------------------------------------------------------------
+
+function mimicServerCall(url="http://mimicServer.example.com", config={}) {
+  return new Promise(function(resolve, reject) {
+    setTimeout(function() {
+      let isRandomFailure = Math.random() < .2
+      if (isRandomFailure) {
+        reject("Random server error. Try again.");
+      } else {
+        resolve("Pretend remote server notified of action!");
+      }
+    }, 300);
+  });
+}
 
     landingPage();
     afterLoginPage();
